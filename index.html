@@ -7,9 +7,26 @@
     <title>Download ClipBee</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #121212;
+            --container-bg: #f4f4f9;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #121212;
+                --text-color: #E0E0E0;
+                --container-bg: #1E1E1E;
+                --shadow-color: rgba(0, 0, 0, 0.3);
+            }
+        }
+
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #f4f4f9;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,43 +36,44 @@
 
         .container {
             text-align: center;
-            background-color: #fff;
+            background-color: var(--container-bg);
             padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px var(--shadow-color);
             max-width: 600px;
         }
 
         h1 {
-            color: #333;
             font-size: 2rem;
             margin-bottom: 20px;
         }
 
         p {
-            color: #666;
             font-size: 1rem;
             margin-bottom: 30px;
         }
 
         .button {
             display: inline-block;
-            background-color: #4CAF50;
             color: white;
             padding: 15px 25px;
             margin: 10px;
             text-decoration: none;
             border-radius: 5px;
             font-size: 1.2rem;
-            transition: background-color 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            text-align: center;
+            width: 80%;
+            max-width: 250px;
         }
 
         .button:hover {
-            background-color: #45a049;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
         }
 
         .button:active {
-            background-color: #3e8e41;
+            transform: scale(0.98);
         }
 
         .android {
@@ -78,10 +96,12 @@
         <h1>Download ClipBee</h1>
         <p>ClipBee allows you to sync your clipboard between multiple Android and Windows devices. Effortlessly copy and
             paste across your devices!</p>
-        <a href="https://mega.nz/file/rbgw2BZR#Rr0fBY-73_Wi8GDXiwKb1BRfIVuJm20OclTOQeA7g30" class="button android">
+        <a href="https://drive.google.com/file/d/1Q4d-eAPJ5SooGjxFSHtZmESzH9UA9SCE/view?usp=sharing"
+            class="button android">
             <i class="fab fa-android"></i> Download for Android
         </a>
-        <a href="https://mega.nz/file/SbBk1KJT#tPjN_J18V6dLQ5K2gMogB7Z5hKGsIhw2XLZr5uaocP0" class="button windows">
+        <a href="https://drive.google.com/file/d/1KKlP11gaNDX-OO1OWydXci1dNVFrZDlt/view?usp=sharing"
+            class="button windows">
             <i class="fab fa-windows"></i> Download for Windows
         </a>
     </div>

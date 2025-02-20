@@ -14,33 +14,46 @@
             --shadow-color: rgba(0, 0, 0, 0.1);
         }
 
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #121212;
-                --text-color: #E0E0E0;
-                --container-bg: #1E1E1E;
-                --shadow-color: rgba(0, 0, 0, 0.3);
-            }
+        body.light {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.light .container {
+            background-color: var(--container-bg);
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+
+        body.dark {
+            --bg-color: #121212;
+            --text-color: #E0E0E0;
+            --container-bg: #1E1E1E;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        body.dark .container {
+            background-color: var(--container-bg);
+            box-shadow: 0 10px 30px var(--shadow-color);
         }
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
             text-align: center;
-            background-color: var(--container-bg);
             padding: 40px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px var(--shadow-color);
             max-width: 600px;
+            transition: background-color 0.3s, box-shadow 0.3s;
         }
 
         h1 {
@@ -90,8 +103,7 @@
     </style>
 </head>
 
-<body>
-
+<body class="light">
     <div class="container">
         <h1>Download ClipBee</h1>
         <p>ClipBee allows you to sync your clipboard between multiple Android and Windows devices. Effortlessly copy and
@@ -106,9 +118,23 @@
         </a>
     </div>
 
-    <!-- FontAwesome for the icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
+    <script>
+        function setTheme() {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.remove('light');
+                document.body.classList.add('dark');
+            } else {
+                document.body.classList.remove('dark');
+                document.body.classList.add('light');
+            }
+        }
+
+        setTheme();
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', setTheme);
+    </script>
 </body>
 
 </html>
